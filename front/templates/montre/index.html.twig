@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Listes des montres{% endblock %}
+
+{% block body %}
+<!-- ***** Preloader Start ***** -->
+<div id="preloader">
+    <div class="jumper">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<!-- ***** Preloader End ***** -->
+
+
+<!-- ***** Main Banner Area Start ***** -->
+<br>
+
+<section class="section" id="men">
+
+    <div class="container">
+        <div class="row">
+
+                <div class="section-heading">
+                    <h2>Liste des montres</h2>
+                    <br>
+                    <a href="/montre/create" style="background: #343A40; text-decoration: none; color: white; padding: 1rem; border-radius: .8rem">Inserez une montre</a>
+                </div>
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Prix</th>
+                    <th scope="col">Categorie</th>
+                    <th scope="col"></th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for montre in montres %}
+                    <tr>
+                        <th scope="row">{{ montre.id }}</th>
+                        <td>{{ montre.name }}</td>
+                        <td>{{ montre.price }}</td>
+                        <td>{{ montre.categorie }}</td>
+                        <td><a href="/single/ {{ montre.id }}">Voir</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<!-- ***** Product Area Ends ***** --
+{% endblock %}
