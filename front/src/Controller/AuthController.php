@@ -42,7 +42,7 @@ class AuthController extends AbstractController
             if ($response->toArray()['message'] == "Bienvenue"){
                 $session = new Session();
                 $session->set('user', $response->toArray()['data']);
-//                $request->getSession()->get('user');
+
 //                dd($request->getSession());
 //                $request->getSession()->set($session->set('user', $response->toArray()['data']);
                 return $this->redirectToRoute('app_home');
