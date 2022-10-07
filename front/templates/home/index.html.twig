@@ -29,13 +29,13 @@
                                     <a href="/single/1">Purchase Now!</a>
                                 </div>
                             </div>
-                            <img height="499" src="{{ categories[4]['image'] }}" alt="">
+                            <img height="490" style="object-fit: cover" src="{{ categories[4]['image'] }}" alt="">
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="right-content">
-                        <div class="row">
+                        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
                             <div class="col-lg-6">
                                 <div class="right-first-image">
                                     <div class="thumb">
@@ -53,7 +53,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <img height="235" src="{{ categories[1]['image'] }}">
+                                        <img style="object-fit: cover; width: 300px; height: 230px" src="{{ categories[1]['image'] }}">
                                     </div>
                                 </div>
                             </div>
@@ -74,7 +74,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <img height="235" src="{{ categories[2]['image'] }}">
+                                        <img style="object-fit: cover; width: 300px; height: 230px" src="{{ categories[2]['image'] }}">
                                     </div>
                                 </div>
                             </div>
@@ -95,7 +95,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <img height="235" src="{{ categories[3]['image'] }}">
+                                        <img style="object-fit: cover; width: 300px; height: 230px" src="{{ categories[3]['image'] }}">
                                     </div>
                                 </div>
                             </div>
@@ -116,7 +116,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <img height="235" src="{{ categories[0]['image'] }}">
+                                        <img style="object-fit: cover; width: 300px; height: 230px" src="{{ categories[0]['image'] }}">
                                     </div>
                                 </div>
                             </div>
@@ -152,11 +152,11 @@
                                             <ul>
                                                 <li><a href="/single/{{ montre['id'] }}"><i class="fa fa-eye"></i></a>
                                                 </li>
-                                                <li><a href="/single/{{ montre['id'] }}"><i
+                                                <li><a href="/cart"><i
                                                                 class="fa fa-shopping-cart"></i></a></li>
                                             </ul>
                                         </div>
-                                        <img src="{{ montre['image'] }}" alt="">
+                                        <img width="100%" height="280px" style="object-fit: cover" src="{{ montre['image'] }}" alt="">
                                     </div>
                                     <div class="down-content">
                                         <h4>{{ montre['name'] }}</h4>
@@ -203,16 +203,15 @@
                                         <div class="hover-content">
                                             <ul>
                                                 <li><a href="/single/{{ montreCat['id'] }}"><i class="fa fa-eye"></i></a></li>
-                                                <li><a href="/single/{{ montreCat['id'] }}"><i class="fa fa-star"></i></a></li>
-                                                <li><a href="/single/{{ montreCat['id'] }}"><i
-                                                                class="fa fa-shopping-cart"></i></a></li>
+                                                <li><a href="/cart/{{ montreCat['id'] }}"><i class="fa fa-star"></i></a></li>
+                                                <li><a href="/cart/"><i class="fa fa-shopping-cart"></i></a></li>
                                             </ul>
                                         </div>
-                                        <img src="{{ montreCat['image'] }}" alt="">
+                                        <img  width="100%" height="280px" style="object-fit: cover" src="{{ montreCat['image'] }}" alt="">
                                     </div>
                                     <div class="down-content">
-                                        <h4>New Green Jacket</h4>
-                                        <span>$75.00</span>
+                                        <h4>{{  montreCat['name'] }}</h4>
+                                        <span>{{ montreCat['price'] }} €</span>
                                         <ul class="stars">
                                             <li><i class="fa fa-star"></i></li>
                                             <li><i class="fa fa-star"></i></li>
@@ -253,7 +252,7 @@
                                 <i class="fa fa-instagram"></i>
                             </a>
                         </div>
-                        <img src="assets/images/instagram-01.jpg" alt="">
+                        <img  src="assets/images/instagram-01.jpg" alt="">
                     </div>
                 </div>
                 <div class="col-2">

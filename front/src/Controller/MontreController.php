@@ -35,6 +35,18 @@ class MontreController extends AbstractController
     }
 
 
+    #[Route('/montre/delete/{id}', name: 'app_del_single', methods: ['GET'])]
+    public function single($id): Response
+    {
+        $response = $this->client->request(
+            'DELETE',
+            "http://127.0.0.1:8001/api/montres/$id/delete"
+        );
+
+        return $this->redirectToRoute('app_montre');
+    }
+
+
     #[Route('/montre/create', name: 'app_create_montre', methods: ['GET', 'POST'])]
     public function create(Request $request): Response
     {
@@ -46,7 +58,6 @@ class MontreController extends AbstractController
                 'image' => $request->get('image'),
                 'categories_id' => $request->get('categories_id'),
             ];
-
 
             $response = $this->client->request(
                 'POST',

@@ -40,6 +40,7 @@
                     <th scope="col">Prix</th>
                     <th scope="col">Categorie</th>
                     <th scope="col"></th>
+                    <th scope="col"></th>
 
                 </tr>
                 </thead>
@@ -50,7 +51,8 @@
                         <td>{{ montre.name }}</td>
                         <td>{{ montre.price }}</td>
                         <td>{{ montre.categorie }}</td>
-                        <td><a href="/single/ {{ montre.id }}">Voir</a></td>
+                        <td><a href="/single/{{ montre.id }}">Voir</a></td>
+                        <td><a href="/montre/delete/{{ montre.id }}">Delete</a></td>
                     </tr>
                 {% endfor %}
                 </tbody>

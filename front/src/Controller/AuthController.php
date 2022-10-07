@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 
@@ -38,23 +39,20 @@ class AuthController extends AbstractController
                     'body' => json_encode($user),
                 ]);
 
-
             if ($response->toArray()['message'] == "Bienvenue"){
                 $session = new Session();
                 $session->set('user', $response->toArray()['data']);
+//                $request->getSession()->get('user');
 //                dd($request->getSession());
 //                $request->getSession()->set($session->set('user', $response->toArray()['data']);
-                return $this->redirectToRoute('app_montre');
+                return $this->redirectToRoute('app_home');
             }
             else{
                 return $this->render('auth/index.html.twig', [
                     'message' => $response->toArray()['message'],
                 ]);
             }
-
-
         }
-
         return $this->render('auth/index.html.twig', [
             'controller_name' => 'AuthController',
         ]);
@@ -65,8 +63,6 @@ class AuthController extends AbstractController
     {
         if ($request->isMethod('POST')) {
             $user = [
-                'first_name' => $request->get('first_name'),
-                'last_name' => $request->get('last_name'),
                 'email' => $request->get('email'),
                 'password' => $request->get('password'),
             ];
@@ -82,6 +78,4 @@ class AuthController extends AbstractController
 
         return $this->render('auth/sign/index.html.twig');
     }
-
-
 }

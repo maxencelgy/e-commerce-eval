@@ -17,7 +17,6 @@ class HomeController extends AbstractController
         $this->client = $client;
     }
 
-
     #[Route('/', name: 'app_home')]
     public function index(): Response
     {
@@ -26,19 +25,16 @@ class HomeController extends AbstractController
             'http://127.0.0.1:8001/api/montres'
         );
         $montres = $response->toArray();
-
         $newResponse = $this->client->request(
             'GET',
             'http://127.0.0.1:8001/api/categories'
         );
         $categories = $newResponse->toArray();
 
-
         foreach ($montres as $montre) {
 
                $this->montreCat[$montre['categorie']][] = $montre;
         }
-
         return $this->render('home/index.html.twig', [
             'montres' => $montres,
             'categories' => $categories,
@@ -55,11 +51,11 @@ class HomeController extends AbstractController
         );
         $montre = $response->toArray();
 
-
         return $this->render('single/index.html.twig', [
             'montre' => $montre,
         ]);
     }
+
 
 
 }
