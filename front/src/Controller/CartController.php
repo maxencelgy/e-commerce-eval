@@ -17,12 +17,16 @@ class CartController extends AbstractController
         $this->client = $client;
     }
 
-    #[Route('/cart', name: 'app_cart_home')]
-    public function index(): Response
+    #[Route('/cart/{id}', name: 'app_cart_home')]
+    public function index($id): Response
     {
+        $response = $this->client->request(
+            'GET',
+            'http://127.0.0.1:8001/api/montres/' . $id
+        );
+        $montre = $response->toArray();
         return $this->render('cart/index.html.twig', [
-
+            'montre' => $montre,
         ]);
     }
-
 }

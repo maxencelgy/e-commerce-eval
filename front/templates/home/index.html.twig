@@ -152,7 +152,7 @@
                                             <ul>
                                                 <li><a href="/single/{{ montre['id'] }}"><i class="fa fa-eye"></i></a>
                                                 </li>
-                                                <li><a href="/cart"><i
+                                                <li><a href="/cart/{{ montre['id'] }}"><i
                                                                 class="fa fa-shopping-cart"></i></a></li>
                                             </ul>
                                         </div>
@@ -204,7 +204,7 @@
                                             <ul>
                                                 <li><a href="/single/{{ montreCat['id'] }}"><i class="fa fa-eye"></i></a></li>
                                                 <li><a href="/cart/{{ montreCat['id'] }}"><i class="fa fa-star"></i></a></li>
-                                                <li><a href="/cart/"><i class="fa fa-shopping-cart"></i></a></li>
+                                                <li><a href="/cart/{{ montreCat['id'] }}"><i class="fa fa-shopping-cart"></i></a></li>
                                             </ul>
                                         </div>
                                         <img  width="100%" height="280px" style="object-fit: cover" src="{{ montreCat['image'] }}" alt="">
