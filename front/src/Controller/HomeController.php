@@ -19,9 +19,8 @@ class HomeController extends AbstractController
     }
 
     #[Route('/', name: 'app_home')]
-    public function index(Request $request): Response
+    public function index(): Response
     {
-
         $response = $this->client->request(
             'GET',
             'http://127.0.0.1:8001/api/montres'
@@ -34,7 +33,6 @@ class HomeController extends AbstractController
         $categories = $newResponse->toArray();
 
         foreach ($montres as $montre) {
-
                $this->montreCat[$montre['categorie']][] = $montre;
         }
         return $this->render('home/index.html.twig', [
@@ -58,6 +56,12 @@ class HomeController extends AbstractController
         ]);
     }
 
-
+    #[Route('/deco', name: 'app_deco')]
+    public function deco(Request $request): Response
+    {
+        $session = $request->getSession();
+        $session->clear();
+        return $this->redirectToRoute('app_home');
+    }
 
 }

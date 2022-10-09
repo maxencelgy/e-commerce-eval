@@ -7,7 +7,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -38,12 +40,10 @@ class AuthController extends AbstractController
                     'headers' => ['content-type:application/json'],
                     'body' => json_encode($user),
                 ]);
-
             if ($response->toArray()['message'] == "Bienvenue"){
-                $session = new Session();
+                $session = new Session(new NativeSessionStorage(), new AttributeBag());
+                $session->set('token', 'a6c1e0b6');
                 $session->set('user', $response->toArray()['data']);
-
-//                dd($request->getSession());
 //                $request->getSession()->set($session->set('user', $response->toArray()['data']);
                 return $this->redirectToRoute('app_home');
             }

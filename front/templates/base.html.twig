@@ -20,7 +20,9 @@
     <link rel="stylesheet" href="/assets/css/owl-carousel.css">
 
     <link rel="stylesheet" href="/assets/css/lightbox.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+          integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
     {% block javascripts %}
         {{ encore_entry_script_tags('app') }}
@@ -45,12 +47,18 @@
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-{#                    {{ dump(app.session) }}#}
+                        {# {{ dump(app.session.get('user')) }} #}
                         <li class="scroll-to-section"><a href="/" class="active">HOME</a></li>
+                        {% if app.session.get('user') %}
                         <li class="scroll-to-section"><a href="/montre">CREATE MONTRE</a></li>
                         <li class="scroll-to-section"><a href="/cart"><i class="fa-solid fa-basket-shopping"></i></a></li>
-                        <li><a class="" href="/auth">CONNEXION / INSCRIPTION</a></li>
+                        {% endif %}
 
+                        {% if app.session.get('user') %}
+                            <li><a class="" href="/deco">DECONNEXION</a></li>
+                        {% else %}
+                            <li><a class="" href="/auth">CONNEXION / INSCRIPTION</a></li>
+                        {% endif %}
                     </ul>
                     <a class='menu-trigger'>
                         <span>Menu</span>
