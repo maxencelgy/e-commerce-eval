@@ -22,7 +22,6 @@ class CategorieController extends AbstractController
         $this->client = $client;
     }
 
-
     #[Route('/categories', name: 'app_categories')]
     public function index(ManagerRegistry $doctrine): JsonResponse
     {
@@ -37,8 +36,6 @@ class CategorieController extends AbstractController
                 'name' => $category->getName(),
                 'image' => $category->getImage(),
                 'montres' => $category->getMontres(),
-
-
             ];
         }
         return $this->json($data);
@@ -89,7 +86,6 @@ class CategorieController extends AbstractController
         $category = $doctrine
             ->getRepository(Montres::class)
             ->findOneById($id);
-
         $data = [
             'id' => $category->getId(),
             'name' => $category->getName(),
